@@ -1,0 +1,17 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '$_CONTAINER_IMG', '$_FILE_PATH']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['auth', 'configure-docker']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '$_CONTAINER_IMG']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['delete', '-f', '$_FILE_PATH/$_AIRFLOW_YAML']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=$_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', '$_FILE_PATH/$_AIRFLOW_YAML']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=$_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
