@@ -54,5 +54,9 @@ if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; the
   done
 fi
 
+#git clone dags
+gcloud auth activate-service-account ${GCPSERVICEACCOUNT} --key-file $CONFIG/${GCPKEY} --project ${GCPPROJECT} && \
+gcloud source repos clone ${DAG_REPOSITORY} --project=${GCPPROJECT}
+
 #execute args
 $CMD "$@"

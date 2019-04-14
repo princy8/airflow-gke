@@ -40,11 +40,7 @@ ADD script/user_register.py ${AIRFLOW_HOME}
 ADD keyfile/${GCPKEY} ${CONFIG}/${GCPKEY}
 ADD script/entrypoint.sh ${AIRFLOW_HOME}
 
-RUN gcloud auth activate-service-account ${GCPSERVICEACCOUNT} --key-file $CONFIG/${GCPKEY} --project ${GCPPROJECT}
-
 WORKDIR ${AIRFLOW_HOME}
-
-RUN gcloud source repos clone ${DAG_REPOSITORY} --project=${GCPPROJECT}
 
 RUN chmod -R 755 ${AIRFLOW_HOME}
 RUN chown -R ${AIRFLOW_USER}: ${AIRFLOW_HOME}
