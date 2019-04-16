@@ -34,7 +34,7 @@ if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; the
     $CMD upgradedb
 
     echo "Register user..."
-    python $AIRFLOW_HOME/user_register.py
+    $CMD create_user -r Admin -u ${AIRFLOW_LOGIN_USER} -p ${AIRFLOW_LOGIN_PASS} -f ${AIRFLOW_FIRSTNAME} -l ${AIRFLOW_LASTNAME} -e ${AIRFLOW_EMAIL}
   fi
 fi
 
