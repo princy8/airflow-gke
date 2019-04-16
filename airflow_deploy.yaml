@@ -129,7 +129,7 @@ spec:
           args : ["webserver"]
           readinessProbe:
             httpGet:
-              path: /admin/airflow/login?next=%2Fadmin%2F
+              path: /login/
               port: 8080
 
 ---
