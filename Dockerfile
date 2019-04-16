@@ -41,7 +41,6 @@ RUN apt update \
     && curl https://sdk.cloud.google.com | bash    
 
 ADD config/airflow.cfg ${AIRFLOW_HOME}
-ADD script/user_register.py ${AIRFLOW_HOME}
 ADD keyfile/${GCPKEY} ${CONFIG}/${GCPKEY}
 ADD script/entrypoint.sh ${AIRFLOW_HOME}
 
