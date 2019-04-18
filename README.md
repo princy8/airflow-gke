@@ -38,15 +38,25 @@ keyfileはgcsにアップしてgsutil使ってcloudshell環境に持っていく
 
 ## Dockerfileの修正
 ---set your environmentの部分
+
 ENV GCPKEY：サービスアカウントのキーファイル名
+
 ENV GCPSERVICEACCOUNT：サービスアカウント名
+
 ENV GCPPROJECT：GCPプロジェクトID
+
 ENV DAG_REPOSITORY：SourceRepositoriesのDAGのリポジトリ名
+
 ENV AIRFLOW_LOGIN_USER：AirflowのWebUIログインユーザー
+
 ENV AIRFLOW_LOGIN_PASS：AirflowのWebUIログインパスワード
+
 ENV AIRFLOW_FIRSTNAME：AirflowのWebUIログインユーザー表示名（名）
+
 ENV AIRFLOW_LASTNAME：AirflowのWebUIログインユーザー表示名（姓）
+
 ENV AIRFLOW_EMAIL：AirflowのWebUIログインユーザーのメールアドレス
+
 
 ## configファイルの修正
 諸々のファイル類の部分で記載したconfigを修正する。
