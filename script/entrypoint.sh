@@ -11,7 +11,7 @@ echo "Postgres host: $POSTGRES_HOST"
 echo "Redis host: $REDIS_HOST"
 
 # set gcp connections
-$CMD connections --add --conn_id=airflow_gcp --conn_type=google_cloud_platform --conn_extra='{"extra__google_cloud_platform__key_path":"/root/.config/gcloud/{keyfilename}","extra__google_cloud_platform__project":"{gcp_projectid}","extra__google_cloud_platform__scope":"https://www.googleapis.com/auth/cloud-platform"}'
+$CMD connections --add --conn_id=airflow_gcp --conn_type=google_cloud_platform --conn_extra='{"extra__google_cloud_platform__key_path":"/root/.config/gcloud/meijisangyo-test-413171d3cff7.json","extra__google_cloud_platform__project":"meijisangyo-test","extra__google_cloud_platform__scope":"https://www.googleapis.com/auth/cloud-platform"}'
 
 # wait for postgres
 if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; then
@@ -31,7 +31,7 @@ if [ "$1" = "webserver" ] || [ "$1" = "worker" ] || [ "$1" = "scheduler" ] ; the
   # initdb and register user
   if [ "$1" = "webserver" ]; then
     echo "Initialize database..."
-    $CMD upgradedb
+    $CMD initdb
 
     echo "Register user..."
     $CMD create_user -r Admin -u ${AIRFLOW_LOGIN_USER} -p ${AIRFLOW_LOGIN_PASS} -f ${AIRFLOW_FIRSTNAME} -l ${AIRFLOW_LASTNAME} -e ${AIRFLOW_EMAIL}
